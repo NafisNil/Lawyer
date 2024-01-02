@@ -62,6 +62,14 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('district.index')}}" class="nav-link {{$route == 'district.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                District
+              </p>
+            </a>
+          </li>
 
         </ul>
       </nav>
