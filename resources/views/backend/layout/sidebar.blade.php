@@ -71,6 +71,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('type.index')}}" class="nav-link {{$route == 'type.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Type
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
