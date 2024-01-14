@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
  
-
+Route::get('user-initial-registration', [UserRegistrationController::class, 'InitialRegistrationForm'])->name('user_initial_registration_form');
+Route::post('user-initial-registration', [UserRegistrationController::class, 'InitialRegistration'])->name('user_initial_registration');
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('district', DistrictController::class);
     Route::resource('type', TypeController::class);
 });
 require __DIR__.'/auth.php';
+
+
+
