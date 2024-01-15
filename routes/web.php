@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function () {
  
 Route::get('user-initial-registration', [UserRegistrationController::class, 'InitialRegistrationForm'])->name('user_initial_registration_form');
 Route::post('user-initial-registration', [UserRegistrationController::class, 'InitialRegistration'])->name('user_initial_registration');
+
+Route::get('user-main-registration', [UserRegistrationController::class, 'MainRegistrationForm'])->name('user_main_registration_form');
+Route::post('user-main-registration', [UserRegistrationController::class, 'MainRegistration'])->name('user_main_registration');
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('district', DistrictController::class);
     Route::resource('type', TypeController::class);
