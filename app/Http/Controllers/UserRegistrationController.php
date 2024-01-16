@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\District;
+use Illuminate\Support\Str;
+use Auth;
 class UserRegistrationController extends Controller
 {
     //
@@ -17,7 +19,8 @@ class UserRegistrationController extends Controller
             'info' => 'required',
             'start' => 'required',
         ]);
-        $email = "";
+        $userCount = User::count();
+        $email = $userCount;
         $mobile = "";
         if ($request->start == 'e') {
             # code...
@@ -34,6 +37,7 @@ class UserRegistrationController extends Controller
         ]);
 
       //  return response()->json($user, 201);
+      return redirect()->route('user_main_registration_form')->with('success', 'Fill up the information!');
 
     }
     public function MainRegistrationForm(){
@@ -57,6 +61,13 @@ class UserRegistrationController extends Controller
         ]);
 
         $user = User::latest()->first();
-        dd($user->id);
+        $user->update($request->all());
+        return redirect()->route('dashboard'); 
+    }
+
+    public function edit_info(){
+        $user = User::find(Auth::user()->id);
+        $district = District::all();
+        return view('backend.user.edit', ['user' => $user, 'district' => $district]);
     }
 }

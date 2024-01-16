@@ -61,7 +61,7 @@
 
             </ul>
           </li>
-
+          @if (Auth::user()->role == '1')
           <li class="nav-item">
             <a href="{{route('district.index')}}" class="nav-link {{$route == 'district.index'?'active':''}}">
               <i class="nav-icon fas fa-th"></i>
@@ -79,6 +79,19 @@
               </p>
             </a>
           </li>
+          @elseif(Auth::user()->role == '2')
+
+          @else
+          <li class="nav-item">
+            <a href="{{route('edit_info_user')}}" class="nav-link {{$route == 'edit_info_user'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Profile update
+              </p>
+            </a>
+          </li>
+          @endif
+
 
         </ul>
       </nav>

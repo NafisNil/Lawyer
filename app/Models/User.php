@@ -26,7 +26,7 @@ class User extends Authenticatable
         'nid',
         'dob',
         'gender',
-        'district','thana','full_address','start','mobile','court', 'experience','type_id','files'
+        'district_id','thana','full_address','start','mobile','court', 'experience','type_id','files'
     ];
 
     /**

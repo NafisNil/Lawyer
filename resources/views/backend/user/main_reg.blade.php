@@ -55,16 +55,24 @@
                         @include('backend.sessionMsg')
                         <form action="{{ route('user_main_registration_form') }}" method="post" class="p-1">
                             @csrf
-<br>
+                             <br>
                             <div class="form-group">
                                 <input type="text" class="form-control "  id=""  name="name" placeholder="Enter name" value="{{ old('name') }}" required>
 
                               </div>
                               <br>
-                            <div class="form-group">
+                              @if (Str::length(@$user->email) >= 7)
+                              <div class="form-group">
                                 <input type="email" class="form-control emailreg"  id="exampleInputEmail1"  name="email" placeholder="Enter email" value="{{ old('email', @$user->email) }}" {{ $user->email != ""? 'readonly':'' }}>
 
                               </div>
+                              @else
+                              <div class="form-group">
+                                <input type="email" class="form-control emailreg"  id="exampleInputEmail1"  name="email" placeholder="Enter email" value="{{ old('email') }}" >
+
+                              </div>
+                              @endif
+
                               <br>
 
                             <div class="form-group">
@@ -82,7 +90,7 @@
                                 <input type="text" class="form-control "  id=""  name="mothers_name" placeholder="Enter mothers name" {{ old('mothers_name') }} value="{{ old('mothers_name') }}" required>
 
                               </div>
-<br>
+                                               <br>
                               <div class="form-group">
                                 <input type="text" class="form-control "  id=""  name="nid" placeholder="Enter NID " value="{{ old('nid') }}" required>
 

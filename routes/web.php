@@ -28,6 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/dashboard',[HomeController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
+    /*user info */
+    Route::get('user-info-edit', [UserRegistrationController::class, 'edit_info'])->name('edit_info_user');
+    
 });
  
 Route::get('user-initial-registration', [UserRegistrationController::class, 'InitialRegistrationForm'])->name('user_initial_registration_form');

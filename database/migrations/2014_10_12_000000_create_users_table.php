@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('fathers_name')->nullable();
             $table->string('mothers_name')->nullable();
             $table->string('nid')->nullable();
+           
             $table->string('dob')->nullable();
             $table->string('role')->default('3')->comment('3 user, 2 lawyer, 1 admin');
             $table->string('gender')->nullable();
