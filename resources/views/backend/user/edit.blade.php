@@ -33,8 +33,9 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="#" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('user_update_info') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                   <input type="text" class="form-control "  id=""  name="name" placeholder="Enter name" value="{{ old('name', @$user->name) }}" required>
 
@@ -118,7 +119,7 @@
                 <div class="form-group">
                   <div class="mb-3">
                       
-                      <textarea class="form-control" name="address" id="" rows="3" required>{{ old('address', @$user->address) }}</textarea>
+                      <textarea class="form-control" name="full_address" id="" rows="3" required>{{ old('full_address', @$user->full_address) }}</textarea>
                   </div>
                   
 
@@ -131,7 +132,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-outline-success btn-sm">Submit</button>
+                  <button type="submit" class="btn btn-outline-success btn-sm">Update</button>
                 </div>
               </form>
             </div>
@@ -151,6 +152,6 @@
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 <script>
     
-    CKEDITOR.replace( 'address' );
+    CKEDITOR.replace( 'full_address' );
 </script>
 @endsection

@@ -5,6 +5,7 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\LawyerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,14 +33,22 @@ Route::middleware('auth')->group(function () {
 
     /*user info */
     Route::get('user-info-edit', [UserRegistrationController::class, 'edit_info'])->name('edit_info_user');
-    
+    Route::put('user-update-info', [UserRegistrationController::class, 'update_info'])->name('user_update_info');
 });
  
 Route::get('user-initial-registration', [UserRegistrationController::class, 'InitialRegistrationForm'])->name('user_initial_registration_form');
 Route::post('user-initial-registration', [UserRegistrationController::class, 'InitialRegistration'])->name('user_initial_registration');
 
+
 Route::get('user-main-registration', [UserRegistrationController::class, 'MainRegistrationForm'])->name('user_main_registration_form');
 Route::post('user-main-registration', [UserRegistrationController::class, 'MainRegistration'])->name('user_main_registration');
+
+
+//lawyer
+Route::get('lawyer-registration', [LawyerController::class, 'registration'])->name('lawyer.registration');
+Route::post('lawyer-registration', [LawyerController::class, 'registrationStore'])->name('lawyer.registration.store');
+
+//lawyer
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('district', DistrictController::class);
     Route::resource('type', TypeController::class);

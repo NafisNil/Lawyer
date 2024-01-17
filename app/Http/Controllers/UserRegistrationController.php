@@ -70,4 +70,12 @@ class UserRegistrationController extends Controller
         $district = District::all();
         return view('backend.user.edit', ['user' => $user, 'district' => $district]);
     }
+
+    public function update_info(Request $request){
+        $user = User::find(Auth::user()->id);
+       
+       //$user->update($request->all());
+       $user->update($request->all());
+         return redirect()->back()->with('success', 'Data updated successfully!');
+    }
 }
